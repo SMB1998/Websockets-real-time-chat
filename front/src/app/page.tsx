@@ -171,7 +171,7 @@ const Home: React.FC = () => {
     }
   }, []);
 
-  const handleStartChat = (id: number, name: string) => {
+  const handleStartChat = (id: string, name: string) => {
     setRoomId(id);
     setUserName(name);
     setModalVisible(false);
