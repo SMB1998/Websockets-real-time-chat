@@ -1,21 +1,21 @@
-version: "3" # Cambia a la versión 3 para mayor compatibilidad
+version: "4" # Cambia a la versión 3 para mayor compatibilidad
 
 services:
-  nextjs:
+  chat:
     build:
-      context: ./front
+      context: ./chat
     image: node:20
-    container_name: nextjs_app
+    container_name: chat
     volumes:
-      - ./front:/app
+      - ./chat:/app
     ports:
       - 3000:3000
     working_dir: /app
     command: npm run dev
-    depends_on:
-      - django
-    networks: # Añadir la red para que Next.js se conecte a Django
-      - elasticnet
+    # depends_on:
+    #   - django
+    # networks: # Añadir la red para que Next.js se conecte a Django
+    #   - elasticnet
 
   django:
     build:
