@@ -32,18 +32,18 @@ services:
       - elasticsearch
     command: bash -c "python /app/manage.py makemigrations && python /app/manage.py migrate && python manage.py runserver 0.0.0.0:8000"
 
-  elasticsearch:
-    container_name: elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
-    volumes:
-      - esdata01:/usr/share/elasticsearch/data
-    ports:
-      - 9200:9200
-    environment:
-      - discovery.type=single-node
-      - xpack.security.enabled=false
-    networks:
-      - elasticnet
+  # elasticsearch:
+  #   container_name: elasticsearch
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
+  #   volumes:
+  #     - esdata01:/usr/share/elasticsearch/data
+  #   ports:
+  #     - 9200:9200
+  #   environment:
+  #     - discovery.type=single-node
+  #     - xpack.security.enabled=false
+  #   networks:
+  #     - elasticnet
 
   redis:
     image: redis:latest
