@@ -1,0 +1,41 @@
+version: "1"
+
+services:
+  django:
+    build:
+      context: .
+    image: django:latest
+    container_name: django
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    networks:
+      - elasticnet
+    depends_on:
+      - elasticsearch
+    # entrypoint: ["./wait-for-it.sh"]
+    # environment:
+    #   - ELASTICSEARCH_HOST=elasticsearch
+    #   - ELASTICSEARCH_PORT=9200
+
+    command: bash -c "python /app/manage.py makemigrations  &&  python /app/manage.py migrate &&  python manage.py runserver 0.0.0.0:8000 "
+
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
+    volumes:
+      - esdata01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    networks:
+      - elasticnet
+
+volumes:
+  esdata01:
+
+networks:
+  elasticnet:

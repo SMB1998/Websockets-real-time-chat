@@ -19,11 +19,11 @@ services:
 
   django:
     build:
-      context: ./logistics
+      context: ./backend
     image: django:latest
     container_name: django_app
     volumes:
-      - ./logistics:/app
+      - ./backend:/app
     ports:
       - "8000:8000"
     networks:

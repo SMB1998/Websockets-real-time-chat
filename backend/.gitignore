@@ -1,0 +1,29 @@
+# Archivos de configuración locales
+
+*/local_settings.py
+
+# Archivos de base de datos
+*.sqlite3
+
+# Archivos estáticos y compilados
+*/staticfiles/
+*.pyc
+*.pyo
+
+# Directorios generados
+__pycache__
+*/__pycache__/
+*.egg-info/
+dist/
+build/
+*.egg-info
+*.egg
+
+# Archivos de registro
+*.log
+
+# Archivos de entorno
+.env
+
+# Directorio de medios
+*/media/
