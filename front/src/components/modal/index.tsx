@@ -10,12 +10,12 @@ import {
 import styles from "./page.module.css"; // Importar los estilos si los necesitas
 
 interface ModalProps {
-  onStart: (id: number, name: string) => void;
+  onStart: (id: string, name: string) => void;
   onClose: () => void;
 }
 
 const ModalEnter: React.FC<ModalProps> = ({ onStart, onClose }) => {
-  const [userId, setUserId] = useState<number>("");
+  const [userId, setUserId] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
 
   const handleStart = () => {
