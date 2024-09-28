@@ -1,33 +1,3 @@
-# Archivos de configuración locales
-
-*/local_settings.py
-
-# Archivos de base de datos
-*.sqlite3
-
-# Archivos estáticos y compilados
-*/staticfiles/
-*.pyc
-*.pyo
-
-# Directorios generados
-__pycache__
-*/__pycache__/
-*.egg-info/
-dist/
-build/
-*.egg-info
-*.egg
-
-# Archivos de registro
-*.log
-
-# Archivos de entorno
-
-
-# Directorio de medios
-*/media/
-
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
