@@ -28,8 +28,6 @@ services:
       - "8000:8000"
     networks:
       - elasticnet
-    depends_on:
-      - elasticsearch
     command: bash -c "python /app/manage.py makemigrations && python /app/manage.py migrate && python manage.py runserver 0.0.0.0:8000"
 
   redis:
