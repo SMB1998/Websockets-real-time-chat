@@ -107,10 +107,7 @@ const WebSocketChat: React.FC<WebSocketChatProps> = ({ roomId, userName }) => {
                       <div className={styles.userIcon}>
                         <i className="fas fa-user-circle"></i>
                       </div>
-                      <strong>
-                        {msg.user === roomId ? userName : `Usuario ${msg.user}`}
-                        :
-                      </strong>{" "}
+                      <strong>{`Usuario ${msg.user}`}:</strong>{" "}
                     </div>
                     {msg.content}
                   </div>
