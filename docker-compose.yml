@@ -4,7 +4,7 @@ services:
   chat:
     build:
       context: ./chat
-    image: node:20
+    image: node:19
     container_name: chat
     volumes:
       - ./chat:/app
