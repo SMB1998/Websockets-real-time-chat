@@ -65,3 +65,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vscode/
+
+# Ignorar archivos de configuración de Node
+package.json
+package-lock.json
