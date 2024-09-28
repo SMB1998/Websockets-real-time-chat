@@ -15,7 +15,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 // Componente de chat con WebSocket
 interface WebSocketChatProps {
-  roomId: number;
+  roomId: string;
   userName: string;
 }
 
