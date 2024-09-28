@@ -1,0 +1,60 @@
+version: "3" # Cambia a la versión 3 para mayor compatibilidad
+
+services:
+  nextjs:
+    build:
+      context: ./front
+    image: node:20
+    container_name: nextjs_app
+    volumes:
+      - ./front:/app
+    ports:
+      - 3000:3000
+    working_dir: /app
+    command: npm run dev
+    depends_on:
+      - django
+    networks: # Añadir la red para que Next.js se conecte a Django
+      - elasticnet
+
+  django:
+    build:
+      context: ./logistics
+    image: django:latest
+    container_name: django_app
+    volumes:
+      - ./logistics:/app
+    ports:
+      - "8000:8000"
+    networks:
+      - elasticnet
+    depends_on:
+      - elasticsearch
+    command: bash -c "python /app/manage.py makemigrations && python /app/manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
+    volumes:
+      - esdata01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    networks:
+      - elasticnet
+
+  redis:
+    image: redis:latest
+    container_name: redis_instance
+    ports:
+      - 6379:6379 # Exponer el puerto de Redis
+    networks:
+      - elasticnet
+
+volumes:
+  esdata01:
+
+networks:
+  elasticnet:
