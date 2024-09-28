@@ -31,7 +31,7 @@ const WebSocketChat: React.FC<WebSocketChatProps> = ({ roomId, userName }) => {
 
   useEffect(() => {
     setLoading(true);
-    const ws = new WebSocket(`ws://34.69.94.81/:8000/ws/chat/${roomId}/`);
+    const ws = new WebSocket(`ws://34.69.94.81:8000/ws/chat/${roomId}/`);
     ws.onopen = () => {
       console.log(`Conectado a la sala: ${roomId}`);
     };
